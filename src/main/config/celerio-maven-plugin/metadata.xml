@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.jaxio.com/schema/celerio">
+  <jdbcConnectivity driver="org.postgresql.Driver" url="jdbc:postgresql://localhost:5432/lexus" user="test" password="test" schemaName="%" oracleRetrieveRemarks="false" oracleRetrieveSynonyms="true" reverseIndexes="true" reverseOnlyUniqueIndexes="true" catalog="lexus">
+    <tableNamePatterns>
+      <tableNamePattern>group</tableNamePattern>
+      <tableNamePattern>training_status</tableNamePattern>
+      <tableNamePattern>training_type</tableNamePattern>
+      <tableNamePattern>subscription_type</tableNamePattern>
+      <tableNamePattern>role</tableNamePattern>
+      <tableNamePattern>subscription</tableNamePattern>
+    </tableNamePatterns>
+    <tableTypes>
+      <tableType>TABLE</tableType>
+    </tableTypes>
+  </jdbcConnectivity>
+  <databaseInfo databaseMajorVersion="9" databaseMinorVersion="4" databaseProductName="PostgreSQL" databaseProductVersion="9.4.26" driverMajorVersion="42" driverMinorVersion="2" driverName="PostgreSQL JDBC Driver" driverVersion="42.2.16" extraInfo=""/>
+  <tables>
+    <table name="training_status" type="TABLE" schemaName="list">
+      <columns>
+        <column name="id" columnDef="nextval('list.training_status_id_seq'::regclass)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="2147483647" type="VARCHAR"/>
+        <column name="code" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="2147483647" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="training_status_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="role" type="TABLE" schemaName="md">
+      <columns>
+        <column name="id" columnDef="nextval('md.role_id_seq'::regclass)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="2147483647" type="VARCHAR"/>
+        <column name="code" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="2147483647" type="VARCHAR"/>
+        <column name="id_user" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="4" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="role_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="training_type" type="TABLE" schemaName="list">
+      <columns>
+        <column name="id" columnDef="nextval('list.training_type_id_seq'::regclass)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="2147483647" type="VARCHAR"/>
+        <column name="code" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="2147483647" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="training_type_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="subscription_type" type="TABLE" schemaName="list">
+      <columns>
+        <column name="id" columnDef="nextval('list.subscription_type_id_seq'::regclass)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="2147483647" type="VARCHAR"/>
+        <column name="code" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="2147483647" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="subscription_type_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="subscription" type="TABLE" schemaName="md">
+      <columns>
+        <column name="id" columnDef="nextval('md.subscription_id_seq'::regclass)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="2147483647" type="VARCHAR"/>
+        <column name="id_user" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="3" size="10" type="INTEGER"/>
+        <column name="date_from" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="4" size="13" type="DATE"/>
+        <column name="date_to" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="5" size="13" type="DATE"/>
+        <column name="price" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="6" size="19" type="BIGINT"/>
+        <column name="id_subscription_type" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="7" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="subscription_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys>
+        <importedKey fkColumnName="id_subscription_type" fkName="subscription_id_subscription_type_fkey" pkColumnName="id" pkTableName="subscription_type" pkTableSchema="list"/>
+      </importedKeys>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="group" type="TABLE" schemaName="list">
+      <columns>
+        <column name="id" columnDef="nextval('list.group_id_seq'::regclass)" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="19" type="BIGINT"/>
+        <column name="name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="2147483647" type="VARCHAR"/>
+        <column name="code" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="2147483647" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="group_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+  </tables>
+</metadata>

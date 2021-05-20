@@ -41,3 +41,8 @@ curl --location --request POST 'http://localhost:8080/training/plan' \
 "idType": 1,
 "price": 10.0
 }'
+
+#Password@user:
+ - trainer@trainer
+ - user@user
+ - admin@admin

@@ -64,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/subscription-type/delete", "/subscription-type/create", "/subscription-type/update")
                 .hasAuthority("ROLE_ADMIN")
 
-                .antMatchers("/training/{id:[\\d+]}/miss", "/training/{id:[\\d+]}/approve", "/training/{id:[\\d+]}/complete")
+                .antMatchers("/training", "/training/{id:[\\d+]}/miss", "/training/{id:[\\d+]}/approve", "/training/{id:[\\d+]}/complete")
                 .hasAnyAuthority("ROLE_ADMIN", "ROLE_TRAINER")
 
                 .antMatchers("/training/plan", "/subscription-type", "/subscription-type/{id:[\\d+]}")
